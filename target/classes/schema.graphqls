@@ -1,0 +1,45 @@
+type Query {
+  user(id: ID!): User
+  deck(id: ID!): Deck
+  card(id: ID!): Card
+}
+
+type Achievement {
+  id: ID!
+  name: String!
+  description: String!
+  logo: String!
+}
+type Card {
+  id: ID!
+  name: String!
+  description: String
+  cost: Int
+  health: Int
+  strenght: Int
+  cardType: String!
+}
+type Deck {
+  id: ID!
+  name: String!
+  maxCardNumber: Int
+  cards: [Card]
+}
+type User {
+  id: ID!
+  elo: Int
+  level: Int!
+  cardCollection: [Card]
+  deckCollection: [Deck]
+  gameHistory: [Game]
+  successedAchievement: [Achievement]
+}
+type Game {
+  id: ID!
+  date: String
+  opponent: User
+  eloVariation: Int
+  result: String
+  usedDeck: Deck
+  type: String
+}
